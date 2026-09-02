@@ -7,7 +7,7 @@
 | Column | WIP | Issues (M0 milestone `1`, 21 open) |
 |---|---|---|
 | **Backlog** | ∞ | `#14` `M0-27` `area:infra` `M0:166` docker-compose · `#15` `M0-28` verify 2 OSes · `#13` `M0-26` Dockerfiles · `#11` `M0-24` CORS · `#10` `M0-23` /health page · `#9` `M0-22` layout shell · `#7` `M0-20` PR Phase2 · `#6` `M0-19` freeze contract · `#5` `M0-18` Alembic · `#4` `M0-17` asyncpg · `#3` `M0-16` /health+CORS · `#2` `M0-15` settings · (others per `#1-21`) |
-| **This Sprint** `M0:119` ≤8 | seeded per `BOARD_SETUP.md:32-35` — *reassigned 2026-09-03* | `#1` `M0-14` `area:api` **sayfeldinn+Moatasem** `M0:131` FastAPI project · `#8` `M0-21` `area:web` `Adel` `M0:149` Next.js |
+| **This Sprint** `M0:119` ≤8 | seeded per `BOARD_SETUP.md:32-35` | `#1` `M0-14` `area:api` **Ahmed+Moatasem** `M0:131` FastAPI project · `#8` `M0-21` `area:web` `Adel` `M0:149` Next.js |
 | **In Progress** | ≤4 | *(empty — move here when dev starts, 1 per person `M0:76-79`)* |
 | **In Review (PR open)** | ≤4 | *(empty — PR opened `feat/<member>/...` per `CONTRIBUTING.md:1`, needs 1 sayfeldinn approval `CONTRIBUTING.md:3`)* |
 | **Done** | ∞ | `M0-1..M0-13` setup tasks (skeleton `M0:107`, `README` `M0:108`, `docs` `M0:110`, `CONTRIBUTING` `M0:111`, `CODEOWNERS` `M0:112`, `ISSUE_TEMPLATE` `M0:113`, `infra/.env.example` `M0:114` `M0-9` `dcad3a0` `v0.0.1`, Ruleset `M0-10` `CONTRIBUTING.md:2`, board checklist `f15a28c` `v0.0.3`, milestones `1–7` + labels `19` + issues `21` created via API `2026-09-03`) |
@@ -16,10 +16,10 @@
 
 | # | Issue | Area | Owner `M0` | Depends |
 |---|---|---|---|---|
-| 1 | `M0-14` Initialize FastAPI `services/api` `M0:131` | `area:api` | **sayfeldinn+Moatasem** | `M0-9,M0-8` |
-| 2 | `M0-15` `core/config.py` `pydantic-settings` `M0:132` | `area:api` | **sayfeldinn+Moatasem** | `M0-14,M0-8` |
-| 3 | `M0-16` `GET /api/v1/health` + `CORSMiddleware` `M0:133` | `area:api` | **sayfeldinn+Moatasem** | `M0-14` |
-| 4 | `M0-17` Postgres `asyncpg` `M0:134` | `area:api` | **sayfeldinn+Moatasem** | `M0-15` |
+| 1 | `M0-14` Initialize FastAPI `services/api` `M0:131` | `area:api` | **Ahmed+Moatasem** | `M0-9,M0-8` |
+| 2 | `M0-15` `core/config.py` `pydantic-settings` `M0:132` | `area:api` | **Ahmed+Moatasem** | `M0-14,M0-8` |
+| 3 | `M0-16` `GET /api/v1/health` + `CORSMiddleware` `M0:133` | `area:api` | **Ahmed+Moatasem** | `M0-14` |
+| 4 | `M0-17` Postgres `asyncpg` `M0:134` | `area:api` | **Ahmed+Moatasem** | `M0-15` |
 | 5 | `M0-18` tables + Alembic `M0:135` | `area:api` | Rodaina (Seif+Jana advisory, sayfeldinn approves) | `M0-17` |
 | 6 | `M0-19` freeze `docs/API_CONTRACT.md` + `packages/shared` `M0:136` | `area:api` | Rodaina+Seif/Jana | `M0-18` |
 | 7 | `M0-20` PR Phase 2 `M0:137` | `area:api` | Hana/Rodaina | `M0-16,18,19` |
