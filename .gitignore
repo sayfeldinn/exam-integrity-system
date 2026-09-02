@@ -1,0 +1,75 @@
+# Node
+node_modules/
+.next/
+out/
+dist/
+build/
+.nuxt/
+.cache/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Next.js
+.next/
+next-env.d.ts
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+.eggs/
+*.whl
+.venv/
+venv/
+env/
+ENV/
+.conda/
+pip-log.txt
+*.log
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.hypothesis/
+
+# Toolchain
+.pnp/
+.pnp.js
+yarn-error.log
+pnpm-debug.log
+
+# Env — never commit real secrets (see infra/.env.example)
+.env
+!.env.example
+!.env.local.example
+infra/.env
+apps/web/.env
+apps/web/.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Docker / infra
+.docker/
+
+# Misc
+*.tmp
+*.temp

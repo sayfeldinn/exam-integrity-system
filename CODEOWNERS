@@ -1,0 +1,11 @@
+# CODEOWNERS — exam-integrity-system
+# Leader is required approver for all paths (only Admin / bypass holder).
+# Peers are listed after leader for notification but cannot satisfy the Ruleset alone.
+# See CONTRIBUTING.md:5 and M0-6 M0:112, M0-10 M0:116.
+
+*               @sayfeldinn
+/services/api/  @sayfeldinn
+/apps/web/      @sayfeldinn
+/infra/         @sayfeldinn
+/docs/          @sayfeldinn
+packages/shared/  @sayfeldinn
