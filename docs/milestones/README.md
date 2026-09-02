@@ -9,7 +9,7 @@
 
 | # | Plan | Target | Scope | Status |
 |---|---|---|---|---|
-| M0 | [`M0_IMPLEMENTATION_PLAN.md`](./M0_IMPLEMENTATION_PLAN.md) | Week 1–2 | Skeleton, `services/api` + `apps/web` scaffolded, Ruleset, `docker compose up` on 2 OSes | Active — DoD `M0:21-96`, Phases `M0:99-186`, Exit `M0:349-360` — tag `v0.0.1` on `dcad3a0` (2026-09-03, `M0-9`), release deferred until green |
+| M0 | [`M0_IMPLEMENTATION_PLAN.md`](./M0_IMPLEMENTATION_PLAN.md) | Week 1–2 | Skeleton, `services/api` + `apps/web` scaffolded, Ruleset, `docker compose up` on 2 OSes | **Phase 1 complete** `2026-09-03` — `M0-1..M0-13` repo foundation done (`dcad3a0` `v0.0.1` + `c7310bf` `v0.0.2` + `f15a28c` `v0.0.3` + `1858f1b` `v0.0.4` + this `phase1-complete`) — DoD `M0:21-96` Phase 1 portion green, `M0-14..M0-34` seeded `This Sprint`/`Backlog` for `Day 2-4` |
 | M1 | `M1_IMPLEMENTATION_PLAN.md` | Week 3–4 | Student registration flow, ID/photo capture, DB schema for students | Planned — drafted at `M0-34` `M0:182` |
 | M2 | `M2_IMPLEMENTATION_PLAN.md` | Week 5–6 | Live face verification end-to-end (client capture → CV service → API) | Planned |
 | M3 | `M3_IMPLEMENTATION_PLAN.md` | Week 7–8 | Periodic identity re-checks during an active session | Planned |
@@ -30,7 +30,7 @@ Timeline assumes ~12–14 week runway (`docs/PROJECT_CONTEXT.md:222-235`); `M0` 
 - Compose path: `infra/docker-compose.yml` via `docker compose -f infra/docker-compose.yml up` (not root) — `M0:14`
 - Branch naming: `<type>/<member-name>/<short-description>` per `CONTRIBUTING.md:1` (`feat/ fix/ docs/ refactor/ test/ chore/`)
 - Ruleset: `Settings → Rules → Rulesets` targeting `main` per `CONTRIBUTING.md:2` / `M0-10` `M0:116` (not legacy `Settings → Branches`)
-- Tagging: milestone tags `m{0..6}-{slug}` + semver `v0.1.0` … `v1.0.0` — `Admin`-only via **Tag protection** `Settings → Tags → New tag protection rule` patterns `v*`, `m*` (see `docs/PROJECT_CONTEXT.md:9` 2026-09-03). Current tag `v0.0.1` on `dcad3a0` (no release until M0 green).
+- Tagging: milestone tags `m{0..6}-{slug}` + semver `v0.1.0` … `v1.0.0` — `Admin`-only via **Tag protection** `Settings → Tags → New tag protection rule` patterns `v*`, `m*` (see `docs/PROJECT_CONTEXT.md:9` 2026-09-03). Current: `v0.0.1` `dcad3a0`, `v0.0.2` `c7310bf`, `v0.0.3` `f15a28c`, `v0.0.4` `1858f1b`, `phase1-complete` (this commit) + `v0.1.0` reference for Phase 1.
 - Durable docs stay flat in `docs/` (`ARCHITECTURE.md`, `API_CONTRACT.md`, `ONBOARDING.md`); per-milestone execution lives here.
 
 ## References

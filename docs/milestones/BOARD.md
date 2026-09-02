@@ -57,4 +57,4 @@ All 21 are `milestone:1` `open`, labeled `milestone:M0` + `area:*` per `POST /is
 
 ---
 
-*Source: `docs/milestones/M0_IMPLEMENTATION_PLAN.md:99-182` `M0-11..M0-34`; snapshot at `f15a28c` `v0.0.3` `2026-09-03`; update when `M0-14`/`M0-21` PRs open (`In Progress` → `In Review`).*
+*Source: `docs/milestones/M0_IMPLEMENTATION_PLAN.md:99-182` `M0-11..M0-34`; snapshot at `1858f1b` `v0.0.4` `2026-09-03` → now `phase1-complete` Phase 1 done; update when `M0-14`/`M0-21` PRs open (`In Progress` → `In Review`). Phase 1 `M0-1..M0-13` **COMPLETE** — see `docs/PROGRESS_LOG.md:11` Sprint 1 `2026-09-02–2026-09-03` and `docs/supervisor-log.md:8` M0 Phase 1 complete.*
