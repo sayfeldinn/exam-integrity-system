@@ -84,4 +84,4 @@ Log fixes here + `docs/PROGRESS_LOG.md` (retro `M0:181`).
 
 ## 7. For Late Joiners
 
-Same steps as §2. Ask leader for `.env` values (never committed). See `docs/STARTING_PLAN.md:10-30` orientation and `docs/milestones/M0_IMPLEMENTATION_PLAN.md:30` placeholders.
+Same steps as §2. Ask sayfeldinn for `.env` values (never committed). See `docs/STARTING_PLAN.md:10-30` orientation and `docs/milestones/M0_IMPLEMENTATION_PLAN.md:30` placeholders.

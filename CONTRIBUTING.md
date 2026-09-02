@@ -50,24 +50,24 @@ Target: `main` — **Ruleset is active** via `Settings → Rules → Rulesets` (
 | Restrict deletions (deletion of `main` blocked) | **On** |
 | Block force pushes | **On** |
 | Require a pull request before merging | **On** |
-| Require at least 1 approval | **On** — approval must come from the leader (only `Admin`) |
+| Require at least 1 approval | **On** — approval must come from sayfeldinn (only `Admin`) |
 | Dismiss stale approvals when new commits are pushed | **On** |
 | Require conversation resolution before merging | **On** |
 | Require status checks + branches up-to-date (lint, after M0-29) | **On** after `ci.yml` lands; placeholder until then |
 
 ### Permissions / Bypass
 
-- Only the repository `Admin` (**team leader**) can bypass the Ruleset.
+- Only the repository `Admin` (**sayfeldinn (team lead)**) can bypass the Ruleset.
 - Bypass mode: **For pull requests only** — even the admin normally opens a PR.
 - Team members have **Write** access (not `Admin`) and **cannot** bypass or modify the Ruleset.
-- Leader remains the **only** `Admin`. Do not grant `Admin` to others.
-- For stronger “only I can approve” enforcement, use a GitHub Organization + a team containing only the leader and require review from that team (per recommendation).
+- sayfeldinn remains the **only** `Admin`. Do not grant `Admin` to others.
+- For stronger “only I can approve” enforcement, use a GitHub Organization + a team containing only sayfeldinn and require review from that team (per recommendation).
 
 ## 3. PR approval ownership
 
-- **Leader is the final reviewer/approver for every PR to `main`.** One approval from the leader is required; stale approvals are dismissed on new pushes, and all conversations must be resolved.
+- **sayfeldinn is the final reviewer/approver for every PR to `main`.** One approval from sayfeldinn is required; stale approvals are dismissed on new pushes, and all conversations must be resolved.
 - Peers may review and comment for context (e.g. CV area input on schema PRs), but peer approval alone does **not** satisfy the Ruleset.
-- SLA: review within **24 hours**. If no leader review in 24h, author pings `#standup` and leader reassigns or reviews directly. Code is `Done` only after merge, not after push.
+- SLA: review within **24 hours**. If no sayfeldinn review in 24h, author pings `#standup` and sayfeldinn reassigns or reviews directly. Code is `Done` only after merge, not after push.
 
 ## 4. Intended Git workflow
 
@@ -79,8 +79,8 @@ For every change:
 2. Commit: `git add . && git commit -m "feat: short summary"`
 3. `git push -u origin <branch>`
 4. Open a PR targeting `main` (ensure branch name matches §1; reference the Issue)
-5. Resolve all conversations; wait for **1 approval from the leader** (stale dismissed on push)
-6. Leader squash-merges. Delete the branch after merge.
+5. Resolve all conversations; wait for **1 approval from sayfeldinn** (stale dismissed on push)
+6. sayfeldinn squash-merges. Delete the branch after merge.
 
 If you need to update after review: push new commits to the same branch — stale approval is dismissed automatically and must be re-approved.
 
@@ -89,11 +89,11 @@ If you need to update after review: push new commits to the same branch — stal
 - Branch name matches `<type>/<member-name>/<short-description>` ?
 - `git push origin main` would fail (Ruleset blocks it) — you pushed to your branch?
 - PR has no unresolved conversations?
-- Waiting specifically for leader approval (not just any teammate)?
+- Waiting specifically for sayfeldinn approval (not just any teammate)?
 
 ## 5. CODEOWNERS
 
-`CODEOWNERS` requires `@<leader>` (GitHub username of the leader, e.g. `@sayfeldinn`) for all paths. Peers may be listed after the leader for notification, but leader approval is still the gate:
+`CODEOWNERS` requires `@sayfeldinn` (GitHub username of sayfeldinn, e.g. `@sayfeldinn`) for all paths. Peers may be listed after sayfeldinn for notification, but sayfeldinn approval is still the gate:
 
 ```
 *               @sayfeldinn

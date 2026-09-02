@@ -87,7 +87,7 @@ docs/mohamed/project-documentation
 
 Allowed types: `feat/ fix/ docs/ refactor/ test/ chore/` — all with `<member-name>/`.
 
-**Workflow:** `git checkout -b <type>/<member-name>/<desc>` → `push` → open PR to `main` → resolve conversations → **1 approval from leader** (only `Admin` can bypass, `For pull requests only`) → squash-merge. **Never push directly to `main`** (initial `git push -u origin main` before Ruleset is the sole exception). Full Ruleset: `CONTRIBUTING.md:2-4`, execution gate: `docs/milestones/M0_IMPLEMENTATION_PLAN.md:57-60`.
+**Workflow:** `git checkout -b <type>/<member-name>/<desc>` → `push` → open PR to `main` → resolve conversations → **1 approval from sayfeldinn** (only `Admin` can bypass, `For pull requests only`) → squash-merge. **Never push directly to `main`** (initial `git push -u origin main` before Ruleset is the sole exception). Full Ruleset: `CONTRIBUTING.md:2-4`, execution gate: `docs/milestones/M0_IMPLEMENTATION_PLAN.md:57-60`.
 
 ---
 
@@ -148,7 +148,7 @@ exam-integrity-system/
 | Ahmed Refaat | AI / Flutter |
 | Huda Mohamed Hasson | UI/UX / ML |
 
-Leader owns `main` Ruleset and `services/api` contract. See `docs/PROJECT_CONTEXT.md:6` + `CONTRIBUTING.md:3`.
+sayfeldinn owns `main` Ruleset and `services/api` contract. See `docs/PROJECT_CONTEXT.md:6` + `CONTRIBUTING.md:3`.
 
 ---
 
@@ -170,7 +170,7 @@ Detailed M0 plan: `docs/milestones/M0_IMPLEMENTATION_PLAN.md`. Progress: `docs/P
 
 ## Contributing
 
-See `CONTRIBUTING.md` for branch naming, commit style, PR SLA (<24h, leader final approver), and `Write` vs `Admin` permissions. Issues use `.github/ISSUE_TEMPLATE.md` (Area / Milestone / Acceptance / Dependencies).
+See `CONTRIBUTING.md` for branch naming, commit style, PR SLA (<24h, sayfeldinn final approver), and `Write` vs `Admin` permissions. Issues use `.github/ISSUE_TEMPLATE.md` (Area / Milestone / Acceptance / Dependencies).
 
 ---
 

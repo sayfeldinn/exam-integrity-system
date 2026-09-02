@@ -22,7 +22,7 @@ Timeline assumes ~12–14 week runway (`docs/PROJECT_CONTEXT.md:222-235`); `M0` 
 ## How to use
 
 - **New joiner:** read `docs/STARTING_PLAN.md` (10 min), then the active `M*` plan in this folder.
-- **Leader/PM:** each `M*` defines Definition of Done, Phases `ID | Task | Depends on | Est. | Owner`, risks, and Exit Checklist (copy-pasteable into Milestone description). Turn each row into a GitHub Issue tagged `Area` + `Milestone`.
+- **sayfeldinn/PM:** each `M*` defines Definition of Done, Phases `ID | Task | Depends on | Est. | Owner`, risks, and Exit Checklist (copy-pasteable into Milestone description). Turn each row into a GitHub Issue tagged `Area` + `Milestone`.
 - **Process:** `M0-34` (`M0:182`) drafts `M1` issues; `Exit` `M0:358` closes `M0` and freezes `docs/API_CONTRACT.md`. Update this index when a milestone closes.
 
 ## Conventions

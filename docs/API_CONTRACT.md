@@ -1,7 +1,7 @@
 # API Contract — exam-integrity-system (v0, M0-19)
 
 > Freeze: `students` / `sessions` / `violations` JSON + `GET /api/v1/health`.
-> Created in `M0-19` `M0:136` (leader approval required). Canonical for `M0-14..M0-25` and future CV work.
+> Created in `M0-19` `M0:136` (sayfeldinn approval required). Canonical for `M0-14..M0-25` and future CV work.
 > Types mirrored in `packages/shared` — single source of truth `M0:49`.
 
 ## 1. Health (M0)

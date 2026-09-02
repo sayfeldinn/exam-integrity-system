@@ -244,7 +244,7 @@ proportionally once the actual defense date is confirmed.
 
 ### Weekly leadership cadence
 
-- **Workflow:** `git checkout -b <type>/<member-name>/<short-description>` → `git push` → open PR to `main` → resolve conversations → obtain 1 approval from leader (stale dismissed on push) → squash-merge. Never push directly to `main` after Ruleset active. See `CONTRIBUTING.md` for full spec and branch types (`feat/ fix/ docs/ refactor/ test/ chore/`).
+- **Workflow:** `git checkout -b <type>/<member-name>/<short-description>` → `git push` → open PR to `main` → resolve conversations → obtain 1 approval from sayfeldinn (stale dismissed on push) → squash-merge. Never push directly to `main` after Ruleset active. See `CONTRIBUTING.md` for full spec and branch types (`feat/ fix/ docs/ refactor/ test/ chore/`).
 - **Monday — sprint planning** (every 2 weeks, 30 min) or quick sync (off
   weeks): review the current milestone, pull the next chunk of work from
   Backlog into "This Sprint," let people claim 1–2 issues in their track
@@ -253,12 +253,12 @@ proportionally once the actual defense date is confirmed.
   yesterday, what's happening today, any blocker. Replaces a daily meeting.
 - **Wednesday/Thursday — 15-min live sync**: unblock anyone stuck more than
   a day; keep it short if async updates already cover the ground.
-- **As PRs open — review within 24 hours, leader is final approver**: every PR to `main` requires **1 approval from the leader** (only `Admin`/bypass holder; stale approvals dismissed on new pushes, conversations must be resolved). Peers may review/comment for context, but cannot approve alone. For stronger enforcement, use a GitHub Organization + team containing only the leader.
+- **As PRs open — review within 24 hours, sayfeldinn is final approver**: every PR to `main` requires **1 approval from sayfeldinn** (only `Admin`/bypass holder; stale approvals dismissed on new pushes, conversations must be resolved). Peers may review/comment for context, but cannot approve alone. For stronger enforcement, use a GitHub Organization + team containing only sayfeldinn.
 - **Sunday — 15-min retro + board cleanup**: what went well, what slowed
   things down, what changes next sprint. Anything stuck "In Progress" for
   3+ sprints gets broken down or re-scoped, not left to linger.
 
-### Leader's specific responsibilities (distinct from contributing code)
+### sayfeldinn's specific responsibilities (distinct from contributing code)
 
 - Own the board's health — check weekly why any card hasn't moved.
 - Break down each milestone into concrete issues *before* sprint planning,
@@ -294,7 +294,7 @@ Issue template for consistent task write-ups: `.github/ISSUE_TEMPLATE.md`.
   sprints, milestone-per-MVP-pillar, weekly leadership cadence (Section 8).
 - Sprint progress tracked separately from decisions: see `docs/PROGRESS_LOG.md`
   for weekly status, this section for durable decisions only.
-- Branch workflow & protection (2026-09-02): Ruleset is active targeting `main` — restrict direct pushes/updates ✓, restrict deletions ✓, block force pushes ✓, require PR ✓, require 1 approval from leader (dismiss stale on push) ✓, require conversation resolution ✓. Bypass: only `Admin` (team leader) can bypass, mode **For pull requests only**; members have `Write` not `Admin` and cannot bypass/modify the Ruleset. Leader is the final reviewer/approver for every PR to `main`. Stronger enforcement via GitHub Organization + team containing only the leader was recommended.
+- Branch workflow & protection (2026-09-02): Ruleset is active targeting `main` — restrict direct pushes/updates ✓, restrict deletions ✓, block force pushes ✓, require PR ✓, require 1 approval from sayfeldinn (dismiss stale on push) ✓, require conversation resolution ✓. Bypass: only `Admin` (sayfeldinn (team lead)) can bypass, mode **For pull requests only**; members have `Write` not `Admin` and cannot bypass/modify the Ruleset. sayfeldinn is the final reviewer/approver for every PR to `main`. Stronger enforcement via GitHub Organization + team containing only sayfeldinn was recommended.
 - Branch naming convention (2026-09-02): `<type>/<member-name>/<short-description>` where `type` ∈ `{feat, fix, docs, refactor, test, chore}`. Examples: `feat/seif/agent-tool-calling`, `feat/ahmed/frontend`, `fix/sara/api-error-handling`, `docs/mohamed/project-documentation`. Documented as source of truth in `CONTRIBUTING.md`.
-- Permissions model (2026-09-02): leader remains the only repository `Admin`; all other members are `Write`. Only the `Admin` can modify Rulesets. Workflow: `create branch <type>/<member-name>/<desc>` → `push` → `open PR to main` → `resolve conversations` → `leader approves` → `squash-merge`. Never push directly to `main` (initial `git push -u origin main` before Ruleset is the sole exception).
+- Permissions model (2026-09-02): sayfeldinn remains the only repository `Admin`; all other members are `Write`. Only the `Admin` can modify Rulesets. Workflow: `create branch <type>/<member-name>/<desc>` → `push` → `open PR to main` → `resolve conversations` → `sayfeldinn approves` → `squash-merge`. Never push directly to `main` (initial `git push -u origin main` before Ruleset is the sole exception).
 - Tagging & releases (2026-09-03): annotated tag `v0.0.1` on `dcad3a0` (`M0-9` initial skeleton) pushed to `origin`; releases deferred until `M0` is fully green (DoD `docs/milestones/M0_IMPLEMENTATION_PLAN.md:21-96` + Exit `M0:349-360`). Convention: milestone tags `m{0..6}-{slug}` (`m0-skeleton`) for internal tracking, semver `v0.1.0` (M0), `v0.2.0` (M1) … `v1.0.0` (M6 defense) for releases; tag creation restricted to `Admin`-only via **Tag protection rules** (`Settings → Tags → New tag protection rule` patterns `v*` and `m*`) to mirror `main` Ruleset bypass model. You chose: `v0.0.1` now, release at M0 exit, tag protection = yes. See `docs/milestones/README.md` for milestone index.

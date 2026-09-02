@@ -68,7 +68,7 @@ exam-integrity-system/
 │   ├── workflows/ci.yml     # M0-29 lint on PR
 │   └── ISSUE_TEMPLATE.md
 ├── CONTRIBUTING.md          # M0-5 branch + workflow + Ruleset
-├── CODEOWNERS               # M0-6 leader required
+├── CODEOWNERS               # M0-6 sayfeldinn required
 ├── .gitignore / .dockerignore / .editorconfig
 ├── .nvmrc (20) / .python-version (3.11.8)
 └── LICENSE (MIT)
