@@ -1,2 +1,6 @@
-opencv-python
-mediapipe
+opencv-python==4.9.0.80
+mediapipe==0.10.14
+numpy<2
+# yolo weights (yolo11n.pt / yolo11s.pt) are not used by current code (MediaPipe only)
+# If YOLO is needed later: ultralytics==8.3.0
+# System deps for Docker: apt-get install -y libgl1-mesa-glx libglib2.0-0
