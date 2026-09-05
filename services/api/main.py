@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
@@ -8,7 +10,14 @@ from sqlalchemy import text
 from core.config import settings
 from core.database import engine
 
-app = FastAPI(title=settings.PROJECT_NAME, version="0.1.0")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    yield
+    await engine.dispose()
+
+
+app = FastAPI(title=settings.PROJECT_NAME, version="0.1.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -31,8 +40,8 @@ async def health_check():
     try:
         async with engine.begin() as conn:
             await conn.execute(text("SELECT 1"))
-    except Exception as e:  # noqa: BLE001  <--- ضعه هنا
-        db_status = f"unhealthy: {e!s}"  # <--- وهنا
+    except Exception as e:  # noqa: BLE001
+        db_status = f"unhealthy: {e!s}"
 
     return {
         "status": "ok" if db_status == "healthy" else "degraded",
