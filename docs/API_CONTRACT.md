@@ -1,105 +1,238 @@
-# API Contract — exam-integrity-system (v0, M0-19)
+# API Contract
 
-> Freeze: `students` / `sessions` / `violations` JSON + `GET /api/v1/health`.
-> Created in `M0-19` `M0:136` (sayfeldinn approval required). Canonical for `M0-14..M0-25` and future CV work.
-> Types mirrored in `packages/shared` — single source of truth `M0:49`.
+Frozen contract for Exam Integrity System API responses.
 
-## 1. Health (M0)
-
-### `GET /api/v1/health` — public (no auth `M0:32`)
-
-- **Response 200:**
-
-```json
-{"status":"ok"}
-```
-
-- **Redirect:** `GET /health` → `302 /api/v1/health`
-- **OpenAPI snippet:**
-
-```yaml
-/api/v1/health:
-  get:
-    summary: Health check (public)
-    responses:
-      '200':
-        content:
-          application/json:
-            schema: {type: object, properties: {status: {type: string, enum: [ok]}}, required: [status]}
-```
-
-- **Web usage:** `apps/web` client-side `fetch(${process.env.NEXT_PUBLIC_API_URL}/api/v1/health)` with fallback UI `API unreachable — check docker logs api` `M0:151`.
-
-## 2. Students (v0, M0-18)
-
-Table: `students` — `id PK`, `university_id UNIQUE`, `role enum`, etc. (`docs/ARCHITECTURE.md:3`)
-
-**Example:**
-
-```json
-{
-  "id": "uuid",
-  "name": "Seif Eldeen Nasser",
-  "university_id": "2023XXXX",
-  "registered_photo_ref": "s3://bucket/students/uuid.jpg",
-  "role": "student",
-  "created_at": "2026-09-03T00:00:00Z"
-}
-```
-
-- `role`: `student | proctor | admin` (enum)
-- `hashed_password` never exposed in API.
-
-## 3. Sessions (v0)
-
-**Example:**
-
-```json
-{
-  "id": "uuid",
-  "student_id": "uuid",
-  "exam_id": "exam-2026-final",
-  "start_time": "2026-09-03T10:00:00Z",
-  "status": "active",
-  "created_at": "2026-09-03T10:00:00Z"
-}
-```
-
-- `status`: `pending | active | ended` (enum)
-
-## 4. Violations (v0)
-
-**Example:**
-
-```json
-{
-  "id": "uuid",
-  "session_id": "uuid",
-  "type": "face_loss",
-  "timestamp": "2026-09-03T10:05:23Z",
-  "risk_contribution": 0.3,
-  "confidence": 0.92,
-  "meta": {"duration_ms": 4500}
-}
-```
-
-- `type`: `phone | person | face_loss | head_turn | voice | noise | screen_leave` (enum)
-- `risk_contribution`: `float 0.0–1.0` (`CHECK 0-1`)
-- `confidence`: `float 0.0–1.0`
-- `meta`: `jsonb` free-form (e.g. `{"duration_ms":...}`, `{"heading":"left"}`)
-
-## 5. Shared Types
-
-`packages/shared` MUST mirror this contract:
-
-```
-packages/shared/types/student.ts + student.py
-packages/shared/types/session.ts + session.py
-packages/shared/types/violation.ts + violation.py
-```
-
-Both `services/api/schemas` and `apps/web/lib/api.ts` import shared types — no `any` duplication (DoD `M0:49`).
+> **Source of truth**: `packages/shared/` types are canonical.  
+> API schemas (`services/api/schemas/`) and frontend imports (`apps/web/lib/api.ts`) consume them.
 
 ---
 
-*Extensions in M1+ append here with version note; do not break v0 fields.*
+## Endpoints
+
+### `GET /api/v1/health`
+
+Health check verifying API and database connectivity.
+
+**Response** `200 OK`
+
+```json
+{
+  "status": "ok",
+  "database": "healthy"
+}
+```
+
+**Response** `200 OK` (degraded)
+
+```json
+{
+  "status": "degraded",
+  "database": "unhealthy: connection refused"
+}
+```
+
+---
+
+### `GET /api/v1/students/{student_id}/sessions`
+
+List of exam sessions for a student.
+
+**Response** `200 OK`
+
+```json
+{
+  "sessions": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "student_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "exam_id": "MATH-301-MID",
+      "start_time": "2025-01-15T09:00:00Z",
+      "status": "active",
+      "created_at": "2025-01-15T08:59:58Z"
+    }
+  ]
+}
+```
+
+---
+
+### `GET /api/v1/sessions/{session_id}/violations`
+
+List of violations recorded for an exam session.
+
+**Response** `200 OK`
+
+```json
+{
+  "violations": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "session_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "type": "phone",
+      "timestamp": "2025-01-15T09:15:32Z",
+      "risk_contribution": 0.85,
+      "confidence": 0.92,
+      "meta": {
+        "bbox": [120, 200, 300, 450],
+        "frame_url": "/frames/session123/frame_0450.jpg"
+      }
+    },
+    {
+      "id": "a1b2c3d4-5678-9abc-def0-1234567890ab",
+      "session_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "type": "face_loss",
+      "timestamp": "2025-01-15T09:22:10Z",
+      "risk_contribution": 0.6,
+      "confidence": 0.78,
+      "meta": {
+        "duration_seconds": 12
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Types
+
+### `Student`
+
+```json
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "name": "Ahmed Ali",
+  "university_id": "20210123",
+  "registered_photo_ref": "/photos/20210123.jpg",
+  "role": "student",
+  "created_at": "2025-01-10T08:00:00Z"
+}
+```
+
+### `ExamSession`
+
+```json
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "student_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "exam_id": "MATH-301-MID",
+  "start_time": "2025-01-15T09:00:00Z",
+  "status": "pending",
+  "created_at": "2025-01-15T08:59:58Z"
+}
+```
+
+### `Violation`
+
+```json
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "session_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "type": "phone",
+  "timestamp": "2025-01-15T09:15:32Z",
+  "risk_contribution": 0.85,
+  "confidence": 0.92,
+  "meta": {}
+}
+```
+
+---
+
+## Enums
+
+### `UserRole`
+
+`"student"` | `"proctor"` | `"admin"`
+
+### `SessionStatus`
+
+`"pending"` | `"active"` | `"ended"`
+
+### `ViolationType`
+
+`"phone"` | `"person"` | `"face_loss"` | `"head_turn"` | `"voice"` | `"noise"` | `"screen_leave"`
+
+---
+
+## OpenAPI Snippet
+
+```yaml
+openapi: 3.1.0
+info:
+  title: Exam Integrity System API
+  version: 0.1.0
+paths:
+  /api/v1/health:
+    get:
+      operationId: healthCheck
+      summary: Health check
+      responses:
+        "200":
+          description: API and database health status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      required: [status, database]
+      properties:
+        status:
+          type: string
+          enum: [ok, degraded]
+        database:
+          type: string
+    ExamSession:
+      type: object
+      required: [id, student_id, exam_id, start_time, status, created_at]
+      properties:
+        id:
+          type: string
+          format: uuid
+        student_id:
+          type: string
+          format: uuid
+        exam_id:
+          type: string
+        start_time:
+          type: string
+          format: date-time
+        status:
+          $ref: "#/components/schemas/SessionStatus"
+        created_at:
+          type: string
+          format: date-time
+    SessionStatus:
+      type: string
+      enum: [pending, active, ended]
+    Violation:
+      type: object
+      required: [id, session_id, type, timestamp, risk_contribution, confidence, meta]
+      properties:
+        id:
+          type: string
+          format: uuid
+        session_id:
+          type: string
+          format: uuid
+        type:
+          $ref: "#/components/schemas/ViolationType"
+        timestamp:
+          type: string
+          format: date-time
+        risk_contribution:
+          type: number
+          minimum: 0
+          maximum: 1
+        confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+        meta:
+          type: object
+    ViolationType:
+      type: string
+      enum: [phone, person, face_loss, head_turn, voice, noise, screen_leave]
+```
