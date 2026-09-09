@@ -57,4 +57,4 @@
 
 ---
 
-*Source: `docs/milestones/M0_IMPLEMENTATION_PLAN.md:99-182` `M0-11..M0-34`; snapshot at `1858f1b` `v0.0.4` `2026-09-03` → now `phase1-complete` Phase 1 done; update when M0-18/M0-21 PRs open (`In Progress` → `In Review`). Phase 1 `M0-1..M0-13` **COMPLETE** — see `docs/PROGRESS_LOG.md:11` Sprint 1 `2026-09-02–2026-09-03` and `docs/supervisor-log.md:8` M0 Phase 1 complete. M0-14/M0-15/M0-16/M0-17 **COMPLETE** — merged to `develop` via PRs #24, #27, #28, #31.*
+*Source: `docs/milestones/M0_IMPLEMENTATION_PLAN.md:99-182` `M0-11..M0-34`; snapshot at `v0.0.2` `2026-09-09`. Phase 1 `M0-1..M0-13` **COMPLETE** — see `docs/PROGRESS_LOG.md:11` Sprint 1 `2026-09-02–2026-09-03`. Phase 2 `M0-14..M0-20` **COMPLETE** — merged to `main` via PRs `#24` `#27` `#28` `#31` `#36` `#38`.*
