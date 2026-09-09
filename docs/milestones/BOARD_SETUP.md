@@ -46,9 +46,9 @@ Verify: `https://github.com/sayfeldinn/exam-integrity-system/milestones` (7), `h
 
 You approved `yes` `2026-09-03` `docs/PROJECT_CONTEXT.md:299` but API `404`. Do via UI:
 
-`https://github.com/sayfeldinn/exam-integrity-system/settings/tags` → **New tag protection rule** → Pattern `v*` → **Add**, then Pattern `m*` → **Add** (only `Admin` can create/move `v*`/`m*`, mirrors `main` Ruleset `CONTRIBUTING.md:2`).
+`https://github.com/sayfeldinn/exam-integrity-system/settings/tags` → **New tag protection rule** → Pattern `v*` → **Add** (only `Admin` can create/move `v*`, mirrors `main` Ruleset `CONTRIBUTING.md:2`).
 
-Or Rulesets for tags: `Settings → Rules → Rulesets → New tag ruleset` targeting `refs/tags/v*` and `refs/tags/m*` with `Restrict creations`.
+Or Rulesets for tags: `Settings → Rules → Rulesets → New tag ruleset` targeting `refs/tags/v*` with `Restrict creations`.
 
 ---
 
