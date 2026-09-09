@@ -4,13 +4,13 @@
 
 **Board:** `https://github.com/sayfeldinn/exam-integrity-system/projects` → `exam-integrity-system Board` (manual, see `BOARD_SETUP.md:13-28`).
 
-| Column | WIP | Issues (M0 milestone `1`, 17 open) |
+| Column | WIP | Issues (M0 milestone `1`, 16 open) |
 |---|---|---|
-| **Backlog** | ∞ | `#14` `M0-27` `area:infra` `M0:166` docker-compose · `#15` `M0-28` verify 2 OSes · `#13` `M0-26` Dockerfiles · `#11` `M0-24` CORS · `#10` `M0-23` /health page · `#9` `M0-22` layout shell · `#7` `M0-20` PR Phase2 · `#6` `M0-19` freeze contract · `#5` `M0-18` Alembic · `#16` `M0-29` lint/CI · `#17` `M0-30` pilot onboarding · `#18` `M0-31` full clones · `#19` `M0-32` test PRs · `#20` `M0-33` fix env · `#21` `M0-34` retro |
+| **Backlog** | ∞ | `#14` `M0-27` `area:infra` `M0:166` docker-compose · `#15` `M0-28` verify 2 OSes · `#13` `M0-26` Dockerfiles · `#11` `M0-24` CORS · `#10` `M0-23` /health page · `#9` `M0-22` layout shell · `#16` `M0-29` lint/CI · `#17` `M0-30` pilot onboarding · `#18` `M0-31` full clones · `#19` `M0-32` test PRs · `#20` `M0-33` fix env · `#21` `M0-34` retro |
 | **This Sprint** `M0:119` ≤8 | seeded per `BOARD_SETUP.md:32-35` | `#5` `M0-18` `area:api` tables + Alembic · `#8` `M0-21` `area:web` `Adel` Next.js |
 | **In Progress** | ≤4 | *(empty — move here when dev starts, 1 per person `M0:76-79`)* |
 | **In Review (PR open)** | ≤4 | *(empty — PR opened `feat/<member>/...` per `CONTRIBUTING.md:1`, needs 1 sayfeldinn approval `CONTRIBUTING.md:3`)* |
-| **Done** | ∞ | `M0-1..M0-13` setup tasks (skeleton `M0:107`, `README` `M0:108`, `docs` `M0:110`, `CONTRIBUTING` `M0:111`, `CODEOWNERS` `M0:112`, `ISSUE_TEMPLATE` `M0:113`, `infra/.env.example` `M0:114` `M0-9` `dcad3a0` `v0.0.1`, Ruleset `M0-10` `CONTRIBUTING.md:2`, board checklist `f15a28c` `v0.0.3`, milestones `1–7` + labels `19` + issues `21` created via API `2026-09-03`) · `#1` `M0-14` FastAPI scaffold `#2` `M0-15` settings `#3` `M0-16` health+CORS `#4` `M0-17` asyncpg — all merged to `develop` |
+| **Done** | ∞ | `M0-1..M0-13` setup tasks · `M0-14` FastAPI scaffold · `M0-15` settings · `M0-16` health+CORS · `M0-17` asyncpg · `M0-18` core tables + Alembic · `M0-19` freeze contract + `packages/shared` · `M0-20` PR Phase 2 leader review — all merged to `main` |
 
 ## Milestone `M0 - Repo and Scaffolding` (`1`, 17 open)
 
