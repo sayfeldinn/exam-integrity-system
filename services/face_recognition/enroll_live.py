@@ -55,7 +55,7 @@ def run_recognition(cap, student_id: str):
             break
 
 
-def enroll_student_live(student_id: str, frame_count: int = 5):
+def enroll_student_live(student_id: str, frame_count: int = 1):
     init_db()
 
     cap = cv2.VideoCapture(1, cv2.CAP_DSHOW)
