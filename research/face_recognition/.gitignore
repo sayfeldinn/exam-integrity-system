@@ -1,0 +1,5 @@
+*.db
+local_face_data.db
+live_photos/
+venv/
+__pycache__/
