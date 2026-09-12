@@ -73,3 +73,7 @@ Thumbs.db
 # Misc
 *.tmp
 *.temp
+
+# Research local data
+research/face_recognition/local_face_data.db
+research/face_recognition/live_photos/
