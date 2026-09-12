@@ -45,6 +45,10 @@ exam-integrity-system/
 │   ├── cv-objects/          # .gitkeep
 │   ├── audio/               # .gitkeep
 │   └── risk-engine/         # .gitkeep
+├── research/                # experimental features — validated here before graduation to services/
+│   ├── README.md            # convention docs
+│   ├── face_recognition/    # Jana — enrollment + recognition spike (needs review fixes)
+│   └── face_monitor/        # Jana — MediaPipe visibility monitor (superseded)
 ├── packages/
 │   └── shared/              # types/violation.ts, types/session.ts (M0-19)
 ├── infra/
