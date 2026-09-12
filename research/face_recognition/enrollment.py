@@ -137,4 +137,4 @@ def _run_recognition_loop(cap, student_id: str):
 
 if __name__ == "__main__":
     sid = sys.argv[1] if len(sys.argv) > 1 else "test-001"
-    enroll_student(sid, frame_count=5, run_recognition=False)
+    enroll_student(sid, frame_count=5, run_recognition=True)
