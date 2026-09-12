@@ -9,7 +9,7 @@ import cv2
 
 from embedding import extract_embedding, average_embeddings
 from local_db import init_db, save_face_data
-from capture import save_live_photo
+
 
 
 def enroll_student_live(student_id: str, frame_count: int = 5):
@@ -66,8 +66,8 @@ def enroll_student_live(student_id: str, frame_count: int = 5):
         raise RuntimeError("Could not extract any valid embedding from the frames. Please try again.")
 
     final_embedding = average_embeddings(embeddings)
-    live_photo_path = save_live_photo(frames[0], student_id)
-    save_face_data(student_id, final_embedding, live_photo_path)
+    
+    save_face_data(student_id, final_embedding, None)
 
     print(f"[enroll] Student {student_id} enrolled successfully ✅")
     return final_embedding
