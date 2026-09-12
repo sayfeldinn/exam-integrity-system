@@ -73,3 +73,8 @@ Thumbs.db
 # Misc
 *.tmp
 *.temp
+# Face recognition local test data
+services/face_recognition/live_photos/
+services/face_recognition/local_face_data.db
+services/face_recognition/venv/
+*.db
