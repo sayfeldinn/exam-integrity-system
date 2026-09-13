@@ -29,7 +29,7 @@ infra — docker-compose.yml wiring api + web + postgres (M0-27 M0:166) + .env.e
 **Boundaries v0 (M0):**
 - `services/api` owns DB + migrations (`alembic`), auth stub, `/api/v1/health` (public).
 - `apps/web` owns UI shell + client fetch of health with fallback `API unreachable`.
-- CV/audio/risk-engine are **placeholders** (`.gitkeep`) — no code, no containers in M0. Their real work starts M1 after `API_CONTRACT.md` frozen.
+- `services/cv-identity/`, `cv-objects/`, `audio/`, `risk-engine/` are **placeholders** (`.gitkeep`) — no production code yet. Experimental work lives in `research/` (face_recognition, face_monitor) and graduates to `services/` when production-ready. Their real production work starts M1 after `API_CONTRACT.md` frozen.
 - `packages/shared` types imported by both `services/api/schemas` and `apps/web/lib/api.ts` (DoD `M0:49`).
 
 ## 2. Repo Tree (v0)
@@ -41,14 +41,14 @@ exam-integrity-system/
 │   └── mobile-proctor/      # Flutter — future empty (M0-1 .gitkeep)
 ├── services/
 │   ├── api/                 # FastAPI (M0-14..M0-20) — main.py, routers/, models/, schemas/, core/config.py
-│   ├── cv-identity/         # .gitkeep (M0-1)
+│   ├── cv-identity/         # .gitkeep (see research/)
 │   ├── cv-objects/          # .gitkeep
 │   ├── audio/               # .gitkeep
 │   └── risk-engine/         # .gitkeep
 ├── research/                # experimental features — validated here before graduation to services/
-│   ├── README.md            # convention docs
-│   ├── face_recognition/    # Jana — enrollment + recognition spike (needs review fixes)
-│   └── face_monitor/        # Jana — MediaPipe visibility monitor (superseded)
+│   ├── README.md            # convention docs (naming, graduation checklist)
+│   ├── face_recognition/    # Jana — enrollment + recognition spike (review-fixed, PR#43)
+│   └── face_monitor/        # Jana — MediaPipe visibility monitor (superseded by face_recognition)
 ├── packages/
 │   └── shared/              # types/violation.ts, types/session.ts (M0-19)
 ├── infra/

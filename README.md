@@ -36,35 +36,26 @@ Team roles formal doc: `Team_Roles.docx` (see `docs/PROJECT_CONTEXT.md:6`).
 
 ## Quick Start
 
-Once `infra/docker-compose.yml` is scaffolded (`M0-26..M0-28`):
-
-```bash
-# 1. Copy env template (never commit .env)
-cp infra/.env.example infra/.env
-
-# 2. Validate compose config (no secrets needed)
-docker compose -f infra/docker-compose.yml config
-
-# 3. Build and start api + web + postgres
-docker compose -f infra/docker-compose.yml up --build
-
-# 4. Verify
-curl http://localhost:8000/api/v1/health        # → {"status":"ok"}
-curl http://localhost:3000                       # web renders health
-# or: make up  (wrapper for the docker command above)
-```
-
-Standalone dev (without Docker, after `M0-14..M0-25`):
+**Standalone dev** (services/api is ready — `M0-14..M0-20` complete):
 
 ```bash
 # api
-cd services/api && uv sync && uvicorn main:app --reload --port 8000
+cd services/api && uv sync && uv run uvicorn main:app --reload --port 8000
 
-# web (in another terminal)
-cd apps/web && npm ci && npm run dev   # http://localhost:3000
+# verify
+curl http://localhost:8000/api/v1/health        # → {"status":"ok"}
 ```
 
-Verify setup script (after `M0-28`):
+**Docker** (after `M0-26..M0-28` scaffold `infra/docker-compose.yml`):
+
+```bash
+cp infra/.env.example infra/.env
+docker compose -f infra/docker-compose.yml up --build
+curl http://localhost:8000/api/v1/health        # → {"status":"ok"}
+curl http://localhost:3000                       # web renders health
+```
+
+**Verify setup script** (after `M0-28`):
 
 ```bash
 ./scripts/verify-setup.sh        # Linux / macOS / WSL
@@ -96,21 +87,25 @@ Allowed types: `feat/ fix/ docs/ refactor/ test/ chore/` — all with `<member-n
 ```
 exam-integrity-system/
 ├── apps/
-│   ├── web/                 # Next.js — student + proctor frontend
-│   └── mobile-proctor/      # Flutter proctor app (future — empty for now)
+│   ├── web/                 # Next.js — student + proctor frontend (M0-21)
+│   └── mobile-proctor/      # Flutter proctor app (future — .gitkeep)
 ├── services/
-│   ├── api/                 # FastAPI — auth, sessions, DB, WebSockets
-│   ├── cv-identity/         # Face detection/recognition, eye tracking, head pose
-│   ├── cv-objects/          # YOLO phone/person detection
-│   ├── audio/               # Voice detection, background noise
-│   └── risk-engine/         # Risk scoring fusion, Gemini assistant, reports
+│   ├── api/                 # FastAPI — auth, sessions, DB, WebSockets (M0-14..M0-20)
+│   ├── cv-identity/         # Face detection/recognition (.gitkeep — see research/)
+│   ├── cv-objects/          # YOLO phone/person detection (.gitkeep)
+│   ├── audio/               # Voice detection, background noise (.gitkeep)
+│   └── risk-engine/         # Risk scoring fusion, Gemini, reports (.gitkeep)
+├── research/                # Experimental features — validated here before graduation to services/
+│   ├── README.md            # Convention docs (naming, graduation checklist)
+│   ├── face_recognition/    # Enrollment + recognition spike (Jana)
+│   └── face_monitor/        # MediaPipe visibility monitor, superseded (Jana)
 ├── packages/
 │   └── shared/              # Shared types/schemas (web + api)
 ├── infra/
-│   ├── docker-compose.yml   # api + web + postgres (see M0-27)
-│   └── .env.example         # required env vars (see M0-8)
+│   ├── docker-compose.yml   # api + web + postgres (M0-27)
+│   └── .env.example         # required env vars (M0-8)
 ├── scripts/
-│   └── verify-setup.sh|.ps1 # OS checks (see M0-28)
+│   └── verify-setup.sh|.ps1 # OS checks (M0-28)
 ├── docs/
 │   ├── PROJECT_CONTEXT.md
 │   ├── STARTING_PLAN.md
@@ -132,6 +127,8 @@ exam-integrity-system/
 ├── .nvmrc / .python-version
 └── LICENSE
 ```
+
+> **Note:** `services/cv-identity/`, `cv-objects/`, `audio/`, `risk-engine/` are `.gitkeep` placeholders. Active CV/audio work lives in `research/` and graduates to `services/` when production-ready.
 
 ---
 

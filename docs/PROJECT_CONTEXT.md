@@ -157,14 +157,18 @@ Monorepo layout, one repo for the whole team:
 ```
 exam-integrity-system/
 ├── apps/
-│   ├── web/                 # Next.js — student + proctor frontend
-│   └── mobile-proctor/      # Flutter proctor app (future work — empty for now)
+│   ├── web/                 # Next.js — student + proctor frontend (M0-21)
+│   └── mobile-proctor/      # Flutter proctor app (future work — .gitkeep)
 ├── services/
-│   ├── api/                 # FastAPI — auth, sessions, DB, WebSockets
-│   ├── cv-identity/         # Face detection/recognition, eye tracking, head pose
-│   ├── cv-objects/          # YOLO phone/person detection, screenshot detection
-│   ├── audio/               # Voice detection, background noise
-│   └── risk-engine/         # Risk scoring fusion, Gemini assistant, reports
+│   ├── api/                 # FastAPI — auth, sessions, DB, WebSockets (M0-14..M0-20)
+│   ├── cv-identity/         # .gitkeep (see research/)
+│   ├── cv-objects/          # .gitkeep
+│   ├── audio/               # .gitkeep
+│   └── risk-engine/         # .gitkeep
+├── research/                # Experimental features — validated here before graduation to services/
+│   ├── README.md            # Convention docs (naming, graduation checklist)
+│   ├── face_recognition/    # Enrollment + recognition spike (Jana)
+│   └── face_monitor/        # MediaPipe visibility monitor, superseded (Jana)
 ├── packages/
 │   └── shared/              # Shared types/schemas used by web + api
 ├── infra/
@@ -188,6 +192,8 @@ exam-integrity-system/
 ├── README.md
 └── LICENSE
 ```
+
+> **Note:** `services/cv-identity/`, `cv-objects/`, `audio/`, `risk-engine/` are `.gitkeep` placeholders. Active CV/audio work lives in `research/` and graduates to `services/` when production-ready.
 
 Full step-by-step initialization order (what to push first, Ruleset
 setup, backend-before-frontend sequencing, etc.) is documented in
@@ -297,4 +303,4 @@ Issue template for consistent task write-ups: `.github/ISSUE_TEMPLATE.md`.
 - Branch workflow & protection (2026-09-02): Ruleset is active targeting `main` — restrict direct pushes/updates ✓, restrict deletions ✓, block force pushes ✓, require PR ✓, require 1 approval from sayfeldinn (dismiss stale on push) ✓, require conversation resolution ✓. Bypass: only `Admin` (sayfeldinn (team lead)) can bypass, mode **For pull requests only**; members have `Write` not `Admin` and cannot bypass/modify the Ruleset. sayfeldinn is the final reviewer/approver for every PR to `main`. Stronger enforcement via GitHub Organization + team containing only sayfeldinn was recommended.
 - Branch naming convention (2026-09-02): `<type>/<member-name>/<short-description>` where `type` ∈ `{feat, fix, docs, refactor, test, chore}`. Examples: `feat/seif/agent-tool-calling`, `feat/ahmed/frontend`, `fix/sara/api-error-handling`, `docs/mohamed/project-documentation`. Documented as source of truth in `CONTRIBUTING.md`.
 - Permissions model (2026-09-02): sayfeldinn remains the only repository `Admin`; all other members are `Write`. Only the `Admin` can modify Rulesets. Workflow: `create branch <type>/<member-name>/<desc>` → `push` → `open PR to main` → `resolve conversations` → `sayfeldinn approves` → `squash-merge`. Never push directly to `main` (initial `git push -u origin main` before Ruleset is the sole exception).
-- Tagging & releases (2026-09-09, updated): all tags use `v{MAJOR}.{MINOR}.{PATCH}` prefix. `v0.0.x` for internal progress checkpoints during active development; `v0.1.0` for M0 release, `v0.2.0` for M1, up to `v1.0.0` for M6 defense. Tag creation restricted to `Admin`-only via **Tag protection rules** (`Settings → Tags → New tag protection rule` pattern `v*`) to mirror `main` Ruleset bypass model. Current: `v0.0.0` (`dcad3a0` skeleton), `v0.0.1` (`892a103` Phase 1 complete), `v0.0.2` (`bd8aee1` Phase 2 complete). See `docs/milestones/README.md` for milestone index.
+- Tagging & releases (2026-09-09, updated): all tags use `v{MAJOR}.{MINOR}.{PATCH}` prefix. `v0.0.x` for internal progress checkpoints during active development; `v0.1.0` for M0 release, `v0.2.0` for M1, up to `v1.0.0` for M6 defense. Tag creation restricted to `Admin`-only via **Tag protection rules** (`Settings → Tags → New tag protection rule` pattern `v*`) to mirror `main` Ruleset bypass model. Current: `v0.0.0` (`dcad3a0` skeleton), `v0.0.1` (`892a103` Phase 1 complete), `v0.0.2` (`3d5c2cf` Phase 2 + research validation + review fixes). See `docs/milestones/README.md` for milestone index.

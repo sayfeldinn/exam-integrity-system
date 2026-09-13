@@ -4,11 +4,11 @@
 
 ## Already Done via API (no manual step)
 
-- **Milestones 7** `M0–M6` (`1:M0 - Repo and Scaffolding` … `7:M6 - Integration Polish Defense Prep`) — `POST /repos/.../milestones` `2026-09-03` (`M0` has 21 open_issues `#1-21`)
+- **Milestones 7** `M0–M6` (`1:M0 - Repo and Scaffolding` … `7:M6 - Integration Polish Defense Prep`) — `POST /repos/.../milestones` `2026-09-03` (`M0` has 21 total issues, 14 open)
 - **Labels 9** `area:api`, `area:web`, `area:cv-identity`, `area:cv-objects`, `area:audio`, `area:risk-engine`, `area:infra`, `area:ux`, `milestone:M0` (19 total with defaults) — `POST /repos/.../labels`
-- **Issues 21** `M0-14..M0-34` `#1-21` — `POST /repos/.../issues` with `milestone:1` + `labels: area:*` + `Owner` per `M0:131-182`
+- **Issues 21** `M0-14..M0-34` `#1-21` — `POST /repos/.../issues` with `milestone:1` + `labels: area:*`. 7 closed (`M0-14..M0-20`), 14 open.
 
-Verify: `https://github.com/sayfeldinn/exam-integrity-system/milestones` (7), `http://github.com/sayfeldinn/exam-integrity-system/issues` (21 open), `.../labels` (19).
+Verify: `https://github.com/sayfeldinn/exam-integrity-system/milestones` (7), `http://github.com/sayfeldinn/exam-integrity-system/issues` (14 open), `.../labels` (19).
 
 ## Manual — Create Projects Board (1 min, Admin only)
 

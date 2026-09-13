@@ -50,3 +50,4 @@ python packages/shared/export_openapi.py > docs/openapi.json
 - API schemas mirror these definitions
 - Frontend types are derived from these files
 - Changes to contract require updating this package first
+- **Research spikes** (`research/`) must mirror these types before graduating to `services/`
