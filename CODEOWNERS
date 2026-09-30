@@ -8,5 +8,4 @@
 /apps/web/      @sayfeldinn
 /infra/         @sayfeldinn
 /docs/          @sayfeldinn
-/packages/shared/  @sayfeldinn
-/research/      @sayfeldinn @Jana
+packages/shared/  @sayfeldinn
