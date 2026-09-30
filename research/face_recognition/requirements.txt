@@ -1,5 +1,16 @@
-insightface==0.7.3
-onnxruntime==1.16.3
-opencv-python==4.9.0.80
-numpy>=1.24,<2
-SQLAlchemy>=2.0,<3
+# Face-recognition spike deps -- verified working 2026-10-01 (Python 3.11-3.12).
+# Install into a FRESH venv only; shared/global envs break these pins
+# (e.g. TensorFlow pins ml-dtypes<0.5, which breaks onnx at import time with
+#  "AttributeError: module 'ml_dtypes' has no attribute 'float4_e2m1fn'").
+insightface==2.0
+onnxruntime-gpu==1.30.0
+# CPU-only machine (no CUDA toolkit): use onnxruntime==1.30.0 instead and skip
+# the force-reinstall below.
+# NOTE: insightface also depends on CPU `onnxruntime`, whose files overwrite the
+# GPU build's during install. Re-assert the GPU build afterwards:
+#   pip install --force-reinstall --no-deps onnxruntime-gpu==1.30.0
+onnx==1.22.0
+ml_dtypes>=0.5.4
+opencv-python==5.0.0.93
+numpy==2.5.3
+SQLAlchemy==2.0.35
