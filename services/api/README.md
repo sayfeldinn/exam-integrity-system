@@ -48,6 +48,17 @@ services/api/
   routers/             # endpoint modules (M0-16)
   models/              # DB models (M0-18)
   schemas/             # Pydantic schemas
+  alembic/             # DB migrations (M0-18)
+  alembic.ini          # Alembic config (reads DATABASE_URL from settings)
+  pyproject.toml       # Python deps (uv/pip)
 ```
+
+## Research Integration
+
+Experimental features live in `research/` and graduate here when production-ready. See `research/README.md` for convention. Graduated features should:
+- Import types from `packages/shared/`
+- Use `core/config.py` for env vars (no hardcoded values)
+- Have Alembic migrations for any new tables
+- Be covered by `Dockerfile` + `docker-compose.yml` wiring
 
 See `docs/milestones/M0_IMPLEMENTATION_PLAN.md:131` (M0-14) and `docs/API_CONTRACT.md` for contract.

@@ -8,43 +8,60 @@
 
 ---
 
+## Sprint 2 — 2026-09-03 – 2026-09-09
+
+**Milestone:** M0 — Repo & Scaffolding (Phase 2 Complete + Research Validation)
+
+- Done:
+  - Phase 2 (`M0-14..M0-20`) merged to `main` via PRs `#24` `#27` `#28` `#31` `#36` `#38`:
+    - `M0-14` FastAPI scaffold + `M0-15` pydantic-settings + `M0-16` health+CORS (`feat/hana/api-scaffold` `PR#24`)
+    - `M0-17` asyncpg (`feat/sayfeldinn/asyncpg-setup` `PR#31`) — review fixes: lifespan handler, return type, Arabic comments, pool_pre_ping
+    - `M0-18` core tables + Alembic (`feat/moatasem/m0-18-db-tables` `PR#27`) — review fixes: removed hardcoded credentials from `alembic.ini`, `env.py` reads `DATABASE_URL` from settings
+    - `M0-19` freeze `docs/API_CONTRACT.md` + `packages/shared` (`feat/sayfeldinn/m0-19-freeze-contract` `PR#37` `PR#38`)
+    - `M0-20` PR Phase 2 leader review gate — closed
+  - Issues closed: `#3` (M0-16), `#4` (M0-17), `#5` (M0-18), `#6` (M0-19), `#7` (M0-20)
+  - Research folder created (`research/README.md`) with convention docs
+  - `face_recognition` moved from `services/` to `research/` (`feat/jana/face-recognition` `PR#41` merged to develop)
+  - `face_monitor` moved from `services/` to `research/` (`feat/jana/face-detection` `PR#42` merged to develop)
+  - `face_recognition` review-fixed (8 files) — `fix/sayfeldinn/face-recognition-review` `PR#43` merged; fixes: lazy-load insightface, CPU default, shared `cosine_similarity()`, threshold unified, `enroll_live.py` deleted, `LargeBinary` for embeddings, `numpy<2`, `SQLAlchemy<3`
+  - Tag cleanup: deleted stale tags (`v0.0.2-4`, `phase1-complete`, `v0.0.1`), reorganized to `v0.0.0` (skeleton), `v0.0.1` (Phase 1), `v0.0.2` (current main `3d5c2cf`)
+  - Docs audit: BOARD.md reconciled, supervisor-log + PROGRESS_LOG updated, root README tree corrected, research/ added to CODEOWNERS, CONTRIBUTING.md, ARCHITECTURE.md, PROJECT_CONTEXT.md
+- In progress / carried over:
+  - `M0-21` Next.js init `feat/adel/web-scaffold` — `This Sprint`
+  - Manual Projects board creation (`M0-11`) — `Huda` 1-min at `https://github.com/sayfeldinn/exam-integrity-system/projects`
+  - Manual tag protection `v*` (`Settings → Tags`)
+- Blocked:
+  - Projects V2 creation via API — token lacks `project` scope; requires manual UI or token with `project` scope
+- Decisions made this sprint:
+  - Research convention: features start in `research/`, graduate to `services/` when production-ready. Naming: `research/<feature-name>/` (no member names)
+  - All tags use `v` prefix — `v0.0.x` internal checkpoints, `v0.1.0`=M0, up to `v1.0.0`=M6
+  - Owner column removed from M0_IMPLEMENTATION_PLAN.md tables
+  - Never push directly to someone else's feature branch — use separate fix branches
+
 ## Sprint 1 — 2026-09-02 – 2026-09-03
 
-**Milestone:** M0 — Repo & Scaffolding (Phase 1 Day 1 — Repo Foundation)
+**Milestone:** M0 — Repo & Scaffolding (Phase 1 — Repo Foundation)
 
 - Done:
-  - Repo skeleton pushed to `main` (`M0-1..M0-9`) — Section 7 tree + `apps/web`/`services/api` `.gitkeep` until scaffold, other services `services/cv-*`/`audio`/`risk-engine`/`packages/shared` `.gitkeep`, `README.md`, `.gitignore`/`.dockerignore`/`.editorconfig`/`.nvmrc`/`python-version`, `docs/` (`ARCHITECTURE.md` v0, `API_CONTRACT.md`, `ONBOARDING.md`, `supervisor-log.md`), `CONTRIBUTING.md`, `LICENSE`+`CODEOWNERS`, `.github/ISSUE_TEMPLATE.md`, `infra/.env.example` 10-var contract — commits `dcad3a0` `v0.0.1` + `c7310bf` `v0.0.2` on `origin/main`
-  - Ruleset active targeting `main` (`M0-10`) — restrict pushes/deletions, block force pushes, require PR + 1 sayfeldinn approval + dismiss stale + conversation resolution + status checks/branches up-to-date, bypass only Admin `For pull requests only`, members `Write` — sayfeldinn `sayfeldinn` only Admin
-  - Board infra via API (`M0-11..13`): milestones `M0–M6` (7, `1:M0` 21 open), labels `area:*` (9 new, 19 total), issues `M0-14..M0-34` (21, `#1-21`, `milestone:1` `open`, labels `area:*`) — `gho_***` `repo` scope `2026-09-03`; board UI (`M0-11` Projects V2 `Backlog→Done` WIP `8/4/4` + fields `Area`/`Milestone`) + tag protection `v*`/`m*` (`Settings → Tags`) documented in `docs/milestones/BOARD_SETUP.md` + snapshot `BOARD.md` — auto token lacked `project` scope (`INSUFFICIENT_SCOPES`), manual 1-min Admin step remains but artifact committed `f15a28c` `v0.0.3` + `1858f1b` `v0.0.4`
-  - Branch workflow `CONTRIBUTING.md:1` `<type>/<member-name>/<desc>` (`feat/fix/docs/refactor/test/chore`) + workflow `branch→push→PR→sayfeldinn approval→squash-merge` + `Write` vs `Admin`
-  - Tagging `v0.0.1` `dcad3a0` skeleton, `v0.0.2` `c7310bf` `.gitkeep`, `v0.0.3` `f15a28c` board setup, `v0.0.4` `1858f1b` board snapshot — `phase1-complete` reference to be tagged
-  - Docs structure refactor `docs/milestones/` (`M0_IMPLEMENTATION_PLAN.md` + `README.md` index) + thin pointer `docs/STARTING_PLAN.md:3-7` (`M0` wins if conflict, `CONTRIBUTING.md` branch source)
+  - Repo skeleton pushed to `main` (`M0-1..M0-9`) — Section 7 tree + `.gitkeep`, `README.md`, `.gitignore`/`.dockerignore`/`.editorconfig`/`.nvmrc`/`python-version`, `docs/` stubs, `CONTRIBUTING.md`, `LICENSE`+`CODEOWNERS`, `.github/ISSUE_TEMPLATE.md`, `infra/.env.example` — commits `dcad3a0` `v0.0.0` + `892a103` `v0.0.1`
+  - Ruleset active targeting `main` (`M0-10`) — restrict pushes/deletions, block force pushes, require PR + 1 sayfeldinn approval + dismiss stale + conversation resolution + status checks, bypass only Admin `For pull requests only`, members `Write`
+  - Board infra via API (`M0-11..13`): milestones `M0–M6` (7), labels `area:*` (19 total), issues `M0-14..M0-34` (21); board UI + tag protection `v*` documented in `BOARD_SETUP.md` + snapshot `BOARD.md`
+  - Branch workflow `CONTRIBUTING.md` — `<type>/<member-name>/<desc>` + workflow + permissions
+  - Tagging convention `v{MAJOR}.{MINOR}.{PATCH}` — `Admin`-only via tag protection pattern `v*`
+  - Docs structure refactor `docs/milestones/` + thin pointer `docs/STARTING_PLAN.md`
 - In progress / carried over:
-  - Manual Projects board creation (`M0-11`) — `Huda` 1-min at `https://github.com/sayfeldinn/exam-integrity-system/projects` → `Backlog/This Sprint/In Progress/In Review/Done` + `Area`/`Milestone` fields + seed `21` issues (`This Sprint` `#1` `M0-14` `Hana` + `#8` `M0-21` `Adel`) — `BOARD_SETUP.md:13-35` checklist ready
-  - Manual tag protection `v*`/`m*` (`Settings → Tags` or `Rulesets` `refs/tags/v*`/`m*`) — sayfeldinn 1-min — `BOARD_SETUP.md:45-51`
-  - Milestone `due_on` dates for `M0–M6` (`M0-12` `Ahmed` `M0 due = D-14w`, `D<12w` compress `7d` per `M0:80,118` + `docs/PROJECT_CONTEXT.md:222-235`) — TBD until defense date `D`
-  - Issue assignees (`M0-13` `Moatasem+Ahmed`) — `21` issues have `Area`+`Milestone` but `assignees []` (GH handles for `Hana`, `Rodaina`, etc. not yet mapped); owners in `BOARD.md:16-41` + bodies are source of truth until handles known
+  - Manual Projects board creation (`M0-11`) — `Huda` 1-min
+  - Manual tag protection `v*` — `sayfeldinn` 1-min
+  - Milestone `due_on` dates for `M0–M6` — TBD until defense date `D`
+  - Issue assignees — `21` issues have `Area`+`Milestone` but `assignees []`
 - Blocked:
-  - Projects V2 creation via API — token `gho_***` has `gist,repo,workflow` only, `createProjectV2` requires `project`+`read:project` (`INSUFFICIENT_SCOPES`); `gh auth status` not logged in — requires manual UI or token with `project` scope + `gh auth refresh -s project`
-  - Tag protection via API — `404` old endpoint `POST /repos/.../tags/protection`, now `Rulesets` for tags (`refs/tags/v*`) — manual UI
+  - Projects V2 creation via API — token lacks `project` scope
+  - Tag protection via API — manual UI required
 - Decisions made this sprint:
-  - Thin pointer model `docs/STARTING_PLAN.md:3-7` (`M0` canonical, `M0` wins if conflict)
-  - Milestones subfolder `docs/milestones/` (`M0` + `README` index) — `B` migration `2026-09-03` (redirect `docs/M0_IMPLEMENTATION_PLAN.md:554B` for 1 sprint)
-  - Empty scaffold dirs kept via `.gitkeep` (`apps/web`, `services/api/*`, `scripts`, `.github/workflows`) until `M0-14`/`M0-21`/`M0-28` (`c7310bf`)
-  - Tagging convention `m{0..6}-{slug}` + semver `v0.1.0` … `v1.0.0` — `Admin`-only `v*`/`m*` via tag protection — `v0.0.1` now, release at `M0` green `M0:21-96`
-
-## Sprint 1 — [start date] – [end date]
-
-**Milestone:** M0 — Repo & Scaffolding
-
-- Done:
-  -
-- In progress / carried over:
-  -
-- Blocked:
-  -
-- Decisions made this sprint:
-  -
+  - Thin pointer model `docs/STARTING_PLAN.md:3` (`M0` canonical, `M0` wins if conflict)
+  - Milestones subfolder `docs/milestones/`
+  - Empty scaffold dirs kept via `.gitkeep` until service starts
+  - Tagging convention `v{MAJOR}.{MINOR}.{PATCH}` — `Admin`-only via tag protection
 
 ---
 

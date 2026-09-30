@@ -101,7 +101,25 @@ If you need to update after review: push new commits to the same branch — stal
 /apps/web/      @sayfeldinn
 /infra/         @sayfeldinn
 /docs/          @sayfeldinn
+/packages/shared/  @sayfeldinn
+/research/      @sayfeldinn @Jana
 ```
+
+## 6. Research workflow
+
+Features start in `research/` before graduating to `services/`. See `research/README.md` for full convention.
+
+| Rule | Detail |
+|------|--------|
+| **Where** | `research/<feature-name>/` (no member names in folder paths) |
+| **Branch** | Use `feat/<member-name>/<desc>` — same as production branches |
+| **Naming** | `research/<feature-name>/README.md` required, `requirements.txt` if Python |
+| **DB** | SQLite OK in research; graduation means migrating to Postgres |
+| **Graduation** | Move to `services/<feature-name>/` when: code review passed, tests written, no hardcoded paths/credentials, cross-platform, integrated with `packages/shared` types, Dockerfile added |
+| **Approver** | `@sayfeldinn` + domain-area CODEOWNERS approval required |
+| **CODEOWNERS** | `/research/` requires `@sayfeldinn` + `@Jana` (notification); sayfeldinn is still the gate |
+
+Graduation checklist: `research/README.md:23-31`.
 
 ## 6. Commit style
 
@@ -113,4 +131,5 @@ If you need to update after review: push new commits to the same branch — stal
 
 - Branch naming & workflow live decision: `docs/PROJECT_CONTEXT.md` §9 (2026-09-02)
 - Step-by-step setup: `docs/STARTING_PLAN.md` Step 2
+- Research convention: `research/README.md` (naming, graduation checklist)
 - M0 tasks wiring this: `docs/milestones/M0_IMPLEMENTATION_PLAN.md` M0-5, M0-6 (CODEOWNERS), M0-10 (Ruleset), M0-32 (test PR validation) — index: `docs/milestones/README.md`

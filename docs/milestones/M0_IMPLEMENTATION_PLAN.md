@@ -116,7 +116,7 @@ conflicts.
 | M0-10 | Activate Ruleset targeting `main` (Settings → Rules → Rulesets): restrict direct pushes/updates to `main`, restrict deletions, block force pushes, require PR, require 1 approval from sayfeldinn (dismiss stale approvals, require conversation resolution, require status checks (lint — enabled after M0-29) + require branches up-to-date). Bypass: only `Admin` (sayfeldinn) can bypass, mode **For pull requests only**; members `Write` cannot bypass/modify Ruleset. | M0-9 | 10 min |
 | M0-11 | Set up GitHub Projects board: columns `Backlog → This Sprint → In Progress → In Review → Done`, WIP limits `This Sprint≤8, In Progress≤4, In Review≤4`, custom fields `Area` (`cv-identity/cv-objects/audio/api/web/risk-engine/ux/infra`) + `Milestone` (M0-M6), labels per area | — (parallel Day 1) | 45 min |
 | M0-12 | Create GitHub Milestones M0–M6 with target dates (TBD until D). M0 due = D-14w; document compression rule if D<12w | — (parallel Day 1) | 20 min |
-| M0-13 | Create all 27 M0 issues on the board in `Backlog` with correct `Area` label + `M0` milestone from creation (no retroactive tagging). Seed `This Sprint` with M0-14/M0-21 | M0-11, M0-12 | 30 min |
+| M0-13 | Create all 21 M0 issues on the board in `Backlog` with correct `Area` label + `M0` milestone from creation (no retroactive tagging). Seed `This Sprint` with M0-14/M0-21 | M0-11, M0-12 | 30 min |
 
 **Coordination Day 1:** sayfeldinn pushes skeleton; Huda/Ahmed/Moatasem build board so Day 2 parallel work is visible. No one with `—` independence is actually delayed to Phase 4.
 
