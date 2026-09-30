@@ -2,7 +2,7 @@
 embedding.py
 ------------
 Face detection + alignment + embedding extraction using insightface.
-Shared between enrollment.py and recognition.py, hence kept separate.
+Shared between enrollment and recognition modules.
 """
 
 import os
@@ -10,6 +10,18 @@ import os
 import numpy as np
 
 _face_app = None
+
+
+class NoFaceDetected(ValueError):
+    """No face found in the frame."""
+
+    pass
+
+
+class MultipleFacesDetected(ValueError):
+    """More than one face found in the frame."""
+
+    pass
 
 
 def _get_face_app():
@@ -27,14 +39,15 @@ def _get_face_app():
 def extract_embedding(frame: np.ndarray) -> np.ndarray:
     """
     Takes a frame, detects and aligns the face automatically, and returns the embedding (512-dim vector).
-    Raises ValueError if no face is found or if multiple faces are detected.
+    Raises NoFaceDetected if no face is found or MultipleFacesDetected if multiple
+    faces are detected (both subclass ValueError for backwards compatibility).
     """
     app = _get_face_app()
     faces = app.get(frame)
     if len(faces) == 0:
-        raise ValueError("No face detected in this image.")
+        raise NoFaceDetected("No face detected in this image.")
     if len(faces) > 1:
-        raise ValueError("Multiple faces detected in this image.")
+        raise MultipleFacesDetected(f"{len(faces)} faces detected in this image.")
     return faces[0].embedding
 
 
