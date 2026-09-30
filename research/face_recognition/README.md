@@ -8,5 +8,4 @@ Face Recognition service — responsible for two main phases:
 
 ```bash
 pip install -r requirements.txt
-python enrollment.py test-001
-python recognition.py test-001
+python enroll_live.py test-001
