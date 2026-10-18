@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* dark marketing site */
+  --navy: #0f1528;
+  --navy-card: #1d2739;
+  --navy-line: #2b364b;
+  --teal: #31e4ca;
+  --mist: #e2e7ef;
+
+  /* light app screens */
+  --page: #f7f8fb;
+  --white: #ffffff;
+  --line: #e5e9f0;
+  --ink: #10162b;
+  --text: #374151;
+  --muted: #6b7587;
+  --faint: #9aa3b5;
+
+  --blue: #1a56f0;
+  --blue-dark: #1741d6;
+  --blue-tint: #edf2ff;
+  --red: #d3000d;
+  --red-tint: #fdeef0;
+  --amber: #b45f06;
+  --amber-tint: #fef6dc;
+  --green: #0b8a4a;
+  --green-tint: #e9fbf1;
+
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-head: 'Manrope', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --shadow-card: 0 1px 2px rgba(16, 22, 43, 0.06), 0 1px 3px rgba(16, 22, 43, 0.05);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--page);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+h1, h2, h3, h4 { font-family: var(--font-head); margin: 0; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* ---- buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn-blue { background: var(--blue); color: #fff; }
+.btn-blue:hover { background: var(--blue-dark); }
+.btn-blue:disabled { background: #9db8f8; cursor: not-allowed; }
+.btn-outline { background: #fff; border-color: var(--line); color: var(--text); box-shadow: var(--shadow-card); }
+.btn-outline:hover { background: #f2f4f8; }
+.btn-ghost { background: none; color: var(--text); padding: 8px 10px; }
+.btn-ghost:hover { background: #f2f4f8; }
+.btn-red { background: var(--red); color: #fff; }
+.btn-small { padding: 6px 12px; font-size: 13px; border-radius: 7px; }
+.btn-wide { width: 100%; }
+
+/* ---- pills and avatars ---- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.pill-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pill-high, .pill-live { background: var(--red-tint); color: var(--red); }
+.pill-review { background: var(--amber-tint); color: var(--amber); }
+.pill-low, .pill-normal, .pill-online, .pill-completed { background: var(--green-tint); color: var(--green); }
+.pill-scheduled { background: var(--blue-tint); color: var(--blue); }
+.pill-live .pill-dot { background: var(--red); }
+.pill-review .pill-dot { background: #f5b800; }
+.pill-scheduled .pill-dot { background: #3b82f6; }
+.pill-low .pill-dot, .pill-normal .pill-dot, .pill-online .pill-dot, .pill-completed .pill-dot { background: #12b76a; }
+
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+}
+
+.mono { font-family: var(--font-mono); }
+
+/* floating "Interface Selector" button, visible on every demo screen */
+.selector-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  padding: 10px 14px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(16, 22, 43, 0.14);
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
