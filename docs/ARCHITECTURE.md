@@ -30,7 +30,7 @@ infra — docker-compose.yml wiring api + web + postgres (M0-27 M0:166) + .env.e
 - `services/api` owns DB + migrations (`alembic`), auth stub, `/api/v1/health` (public).
 - `apps/web` owns UI shell + client fetch of health with fallback `API unreachable`.
 - CV/audio/risk-engine are **placeholders** (`.gitkeep`) — no code, no containers in M0. Their real work starts M1 after `API_CONTRACT.md` frozen.
-- `packages/shared` types imported by both `services/api/schemas` and `apps/web/lib/api.ts` (DoD `M0:49`).
+- `packages/shared` types imported by both `services/api/schemas` and `apps/web/client/src/lib/api.ts` (DoD `M0:49`).
 
 ## 2. Repo Tree (v0)
 

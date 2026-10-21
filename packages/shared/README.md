@@ -2,7 +2,7 @@
 
 Single source of truth for Exam Integrity System types.
 
-Both `services/api/schemas/` and `apps/web/lib/api.ts` should import from this package.
+Both `services/api/schemas/` and `apps/web/client/src/lib/api.ts` should import from this package.
 
 ## Structure
 

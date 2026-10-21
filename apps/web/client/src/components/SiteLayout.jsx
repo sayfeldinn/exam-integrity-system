@@ -49,6 +49,8 @@ export default function SiteLayout() {
 
       <footer className="site-footer">
         Faculty of Computers and Data Science, Alexandria University · Graduation Project 2026
+        {' · '}
+        <Link to="/health">System status</Link>
       </footer>
     </div>
   );

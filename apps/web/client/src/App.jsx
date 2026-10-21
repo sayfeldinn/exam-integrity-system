@@ -6,6 +6,7 @@ import Home from './pages/Home.jsx';
 import Product from './pages/Product.jsx';
 import Contact from './pages/Contact.jsx';
 import Mobile from './pages/Mobile.jsx';
+import Health from './pages/Health.jsx';
 import Login from './pages/student/Login.jsx';
 import Verify from './pages/student/Verify.jsx';
 import Permissions from './pages/student/Permissions.jsx';
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<Product />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/health" element={<Health />} />
       </Route>
 
       <Route path="/mobile" element={<Mobile />} />

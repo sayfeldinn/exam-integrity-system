@@ -3,7 +3,7 @@
 Frozen contract for Exam Integrity System API responses.
 
 > **Source of truth**: `packages/shared/` types are canonical.  
-> API schemas (`services/api/schemas/`) and frontend imports (`apps/web/lib/api.ts`) consume them.
+> API schemas (`services/api/schemas/`) and frontend imports (`apps/web/client/src/lib/api.ts`) consume them.
 
 ---
 

@@ -156,3 +156,45 @@
   .page-intro { padding: 70px 0 56px; }
   .page-intro h1 { font-size: 38px; }
 }
+
+/* --- Health page (M0-23) --- */
+.health-page .health-card {
+  max-width: 560px;
+  margin: 2rem auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.health-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.health-icon.ok { color: #0d9488; }
+.health-icon.warn { color: #d97706; }
+.health-icon.err { color: #dc2626; }
+.health-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.health-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.health-hint {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+.health-hint code {
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+.health-unreachable { border-color: #dc262633; }
+.health-degraded { border-color: #d9770633; }
+.health-ok { border-color: #0d948833; }
+@keyframes health-spin { to { transform: rotate(360deg); } }
+.spin { animation: health-spin 1s linear infinite; }
+
