@@ -1,0 +1,77 @@
+# M0-29: CI gate — api checks (ruff/black/compile) + web lint/build.
+# Branch-protection ruleset makes these required (validated by M0-32/#19).
+name: CI
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+
+jobs:
+  api:
+    name: api (ruff · black · compile · alembic)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/api
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.11.8"
+          enable-cache: true
+
+      - name: Install deps (frozen lockfile)
+        run: uv sync --frozen
+
+      - name: Ruff
+        run: uv run ruff check .
+
+      - name: Black
+        run: uv run black --check .
+
+      - name: Compile check
+        run: uv run python -m compileall -q .
+
+      - name: Alembic history resolves
+        # Needs settings (DATABASE_URL/JWT_SECRET are required fields) but no DB.
+        env:
+          DATABASE_URL: postgresql+asyncpg://ci:ci@localhost:5432/ci
+          JWT_SECRET: ci-only-not-a-real-secret
+        run: uv run alembic history | head -5
+
+  compose:
+    name: compose config validates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate compose file with the env contract
+        run: |
+          cp infra/.env.example infra/.env
+          docker compose -f infra/docker-compose.yml config --quiet
+
+  web:
+    name: web (lint · build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web/client
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/web/client/package-lock.json
+
+      - name: Install deps (frozen lockfile)
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build

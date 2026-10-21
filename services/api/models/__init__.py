@@ -5,7 +5,7 @@ from models.violation import Violation
 
 __all__ = [
     "Base",
-    "Student",
     "ExamSession",
+    "Student",
     "Violation",
 ]

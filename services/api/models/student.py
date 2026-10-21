@@ -1,13 +1,18 @@
 from __future__ import annotations
 
 from datetime import datetime
+from typing import TYPE_CHECKING
 from uuid import UUID, uuid4
 
-from sqlalchemy import DateTime, Enum as SqlEnum, String, Uuid, func
+from sqlalchemy import DateTime, String, Uuid, func
+from sqlalchemy import Enum as SqlEnum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from models.base import Base
 from models.enums import UserRole
+
+if TYPE_CHECKING:
+    from models.session import ExamSession
 
 
 class Student(Base):
@@ -44,6 +49,6 @@ class Student(Base):
         server_default=func.now(),
     )
 
-    sessions: Mapped[list["ExamSession"]] = relationship(
+    sessions: Mapped[list[ExamSession]] = relationship(
         back_populates="student",
     )
