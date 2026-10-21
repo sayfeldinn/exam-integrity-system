@@ -32,9 +32,10 @@ class Settings(BaseSettings):
     JWT_SECRET: str
 
     # --- CORS -----------------------------------------------------------
-    # Comma-separated origins, e.g. "http://localhost:3000,https://staging.example.com"
+    # Comma-separated origins, e.g. "http://localhost:5173,https://staging.example.com"
     # Use cors_origins_list property for CORSMiddleware (M0-16).
-    CORS_ORIGINS: str = "http://localhost:3000"
+    # 5173 = Vite dev server (apps/web/client); 3000 kept for the legacy port.
+    CORS_ORIGINS: str = "http://localhost:5173,http://localhost:3000"
 
     @property
     def cors_origins_list(self) -> list[str]:
