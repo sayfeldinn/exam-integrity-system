@@ -1,0 +1,60 @@
+# infra/docker-compose.yml — local full-stack (M0-27)
+# Setup:      cp infra/.env.example infra/.env
+# Validate:   docker compose -f infra/docker-compose.yml config
+# Run:        docker compose -f infra/docker-compose.yml up --build
+#   API   ->  http://localhost:8000/api/v1/health   (or ${API_PORT})
+#   Web   ->  http://localhost:5173/health          (or ${WEB_PORT})
+# Teardown:   docker compose -f infra/docker-compose.yml down -v
+
+name: exam-integrity
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    env_file: ./.env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-exam_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me-local-only}
+      POSTGRES_DB: ${POSTGRES_DB:-exam_integrity}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-exam_user} -d $${POSTGRES_DB:-exam_integrity}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: ../services/api
+    env_file: ./.env
+    # .env.example's DATABASE_URL already points at the `postgres` service
+    # (Docker network hostname); JWT_SECRET fail-fastes via core/config.py.
+    command: >
+      sh -c "uv run --no-sync alembic upgrade head &&
+             uv run --no-sync uvicorn main:app --host 0.0.0.0 --port 8000"
+    ports:
+      - "127.0.0.1:${API_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
+
+  web:
+    build:
+      context: ../apps/web/client
+      args:
+        # Baked into the bundle at build time — browser-reachable URL only.
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:8000}
+    ports:
+      - "127.0.0.1:${WEB_PORT:-5173}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  pgdata:

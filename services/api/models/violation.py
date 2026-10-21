@@ -1,24 +1,29 @@
 from __future__ import annotations
 
 from datetime import datetime
+from typing import TYPE_CHECKING
 from uuid import UUID, uuid4
-
 
 from sqlalchemy import (
     CheckConstraint,
     DateTime,
-    Enum as SqlEnum,
     Float,
     ForeignKey,
     Uuid,
     func,
     text,
 )
+from sqlalchemy import (
+    Enum as SqlEnum,
+)
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from models.base import Base
 from models.enums import ViolationType
+
+if TYPE_CHECKING:
+    from models.session import ExamSession
 
 
 class Violation(Base):
@@ -71,6 +76,6 @@ class Violation(Base):
         server_default=text("'{}'::jsonb"),
     )
 
-    session: Mapped["ExamSession"] = relationship(
+    session: Mapped[ExamSession] = relationship(
         back_populates="violations",
     )

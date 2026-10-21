@@ -1,13 +1,19 @@
 from __future__ import annotations
 
 from datetime import datetime
+from typing import TYPE_CHECKING
 from uuid import UUID, uuid4
 
-from sqlalchemy import DateTime, Enum as SqlEnum, ForeignKey, String, Uuid, func
+from sqlalchemy import DateTime, ForeignKey, String, Uuid, func
+from sqlalchemy import Enum as SqlEnum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from models.base import Base
 from models.enums import SessionStatus
+
+if TYPE_CHECKING:
+    from models.student import Student
+    from models.violation import Violation
 
 
 class ExamSession(Base):
@@ -44,9 +50,9 @@ class ExamSession(Base):
         server_default=func.now(),
     )
 
-    student: Mapped["Student"] = relationship(
+    student: Mapped[Student] = relationship(
         back_populates="sessions",
     )
-    violations: Mapped[list["Violation"]] = relationship(
+    violations: Mapped[list[Violation]] = relationship(
         back_populates="session",
     )
