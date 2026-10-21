@@ -41,6 +41,17 @@ jobs:
           JWT_SECRET: ci-only-not-a-real-secret
         run: uv run alembic history | head -5
 
+  compose:
+    name: compose config validates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate compose file with the env contract
+        run: |
+          cp infra/.env.example infra/.env
+          docker compose -f infra/docker-compose.yml config --quiet
+
   web:
     name: web (lint · build)
     runs-on: ubuntu-latest
